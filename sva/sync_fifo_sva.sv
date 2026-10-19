@@ -69,6 +69,11 @@ always_ff @(posedge clk) begin
 end
 
 
+//telling the formal tool that reset is active on the very first cycle
+`ifdef FORMAL
+initial assume (!rst_n);
+`endif
+
 //ASSERTIONS
 //if not reset, check that full and empty never asserted together
 ast_not_full_and_empty: assert property(
