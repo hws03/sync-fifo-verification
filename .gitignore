@@ -1,2 +1,6 @@
 #notes doc
 notes.docx
+
+#generated outputs from formal
+formal/sync_fifo_prove/
+formal/sync_fifo_cover/
