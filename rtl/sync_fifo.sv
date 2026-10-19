@@ -75,4 +75,11 @@ always_ff @(posedge clk) begin
 end
 
 
+
+//for formal testing with sync_fifo_formal.svh
+`ifdef FORMAL
+    `include "sync_fifo_formal.svh"
+`endif
+
+
 endmodule
