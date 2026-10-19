@@ -13,7 +13,7 @@ smtbmc
 
 [script]
 read -formal sync_fifo.sv
-chparam -set DEPTH 16 sync_fifo
+chparam -set DEPTH 4 sync_fifo
 prep -top sync_fifo
 
 [files]
