@@ -5,3 +5,14 @@ notes.docx
 formal/sync_fifo_prove/
 formal/sync_fifo_cover/
 formal/sync_fifo/
+
+#cocotb
+.venv/
+cocotb/sim_build/
+cocotb/results.xml
+cocotb/__pycache__/
+cocotb/*.vcd
+cocotb/*.fst
+
+#uvm
+uvm/
