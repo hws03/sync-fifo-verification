@@ -1,5 +1,5 @@
 # Formal Results
-- All assertions fully proved by k-induction at DEPTH 4 and 16
+- All assertions fully proved by k-induction/temporal induction at DEPTH 4 and 16
 - All 7 covers reached
 - Six injected bugs caught
 
@@ -8,10 +8,14 @@
 ## How to run
 
 ```
-	source ~/oss-cad-suite/environment    # macOS & Linux
-	<path>\oss-cad-suite\environment.bat  # Windows (untested by me)
-	cd formal
-	sby -f sync_fifo.sby
+#macOS & Linux
+source ~/oss-cad-suite/environment
+
+#Windows (untested by me)
+<path>\oss-cad-suite\environment.bat  
+
+cd formal
+sby -f sync_fifo.sby
 ```
 
 
