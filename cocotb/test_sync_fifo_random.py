@@ -3,11 +3,58 @@ from collections import deque
 import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles, FallingEdge
-
+from cocotb_coverage.coverage import CoverPoint, CoverCross, coverage_db
 
 
 DEPTH = 16
 CYCLES = 1000 #1000 random cycles
+
+
+#functional coverage
+def fifo_state(cap):
+    if cap == 0:
+        return "empty"
+    else:
+        if cap == DEPTH:
+            return "full"
+        else:
+            return "middle"
+
+
+#check fifo has been filled all the way throug from 0 to DEPTH
+@CoverPoint("fifo.cap", 
+            xf=lambda cap, wr, rd: cap, 
+            bins=list(range(DEPTH+1))
+            )
+
+#check fifo has been through all states
+@CoverPoint("fifo.state", 
+            xf=lambda cap, wr, rd: fifo_state(cap), 
+            bins=["empty", "middle", "full"]
+            )
+
+#check wr_en
+@CoverPoint("fifo.wr", 
+            xf=lambda cap, wr, rd: wr, 
+            bins=[0,1]
+            )
+
+#check rd_en
+@CoverPoint("fifo.rd", 
+            xf=lambda cap, wr, rd: rd, 
+            bins=[0,1]
+            )
+
+#check that every read/write combination has happened in every state
+@CoverCross("fifo.op", 
+            items=["fifo.state", "fifo.wr", "fifo.rd"]
+            )
+
+
+
+def sample_func_coverage(cap, wr, rd):
+    pass
+
 
 
 
@@ -47,6 +94,9 @@ async def test_random_write(dut):
         #constrained random testing
         wr_en = int(random.random() < 0.7) #write requested 70% of the time
         rd_en = int(random.random() < 0.3) #read requested 30% of the time
+
+        #sample functional coverage every cycle
+        sample_func_coverage(len(model_content), wr_en, rd_en)
 
         wr_data = random.randint(0, 255) #8bit data
 
@@ -94,6 +144,9 @@ async def test_random_read(dut):
         wr_en = int(random.random() < 0.3) #write requested 30% of the time
         rd_en = int(random.random() < 0.7) #read requested 70% of the time
 
+        #sample functional coverage every cycle
+        sample_func_coverage(len(model_content), wr_en, rd_en)
+
         wr_data = random.randint(0, 255) #8bit data
 
         #feed random inputs to dut
@@ -111,3 +164,9 @@ async def test_random_read(dut):
 
         if wr_accepted:
             model_content.append(wr_data)
+
+
+
+    #for functional coverage: report all bins and save file
+    coverage_db.report_coverage(dut._log.info, bins=True)
+    coverage_db.export_to_yaml(filename="func_coverage_result.yml")
