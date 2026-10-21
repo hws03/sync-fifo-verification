@@ -37,6 +37,19 @@ make COCOTB_RANDOM_SEED=<seed>
 | `test_random_read` | 1000 constrained random cycles, 30% write / 70% read (empty/underflow) |
 
 
+## Functional Coverage
+
+Sampled every cycle in both random tests. Report printed at the end of the run and saved to `results/func_coverage_result.yml`.
+
+| Cover | What it checks | Bins hit |
+|------------|----------------|----------|
+| `fifo.cap` | every fill level from 0 to DEPTH has been reached | 17/17 |
+| `fifo.state` | the fifo has been empty, filled to middle and full | 3/3 |
+| `fifo.wr` | write enable has been both 0 and 1 | 2/2 |
+| `fifo.rd` | read enable has been both 0 and 1 | 2/2 |
+| `fifo.op` | every read/write combination in every state | 12/12 |
+| **Total** | | **36/36** |
+
 
 ## Bug Injections
 
