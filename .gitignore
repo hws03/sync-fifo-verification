@@ -13,6 +13,7 @@ cocotb/results.xml
 cocotb/__pycache__/
 cocotb/*.vcd
 cocotb/*.fst
+cocotb/*.yml
 
 #uvm
 uvm/
