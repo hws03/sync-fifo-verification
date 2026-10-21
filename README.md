@@ -9,6 +9,7 @@ SVA assertions, formal methods (SymbiYosys) and a constrained random cocotb test
 |--------|--------|
 | Formal (SymbiYosys) | All assertions fully proved by k-induction/temporal induction at DEPTH 4 and 16; all 7 covers reached |
 | cocotb (Verilator) | 3 tests × 100 seeds (300 runs -> 2 random tests × 1,000 cycles each × 100 seeds = 200,000 random cycles). all passed |
+| Functional coverage | 100% across 36 bins: every fill level and every read/write combination when empty, when filled to middle and full |
 | Bug injection | 6/6 caught by formal, 5/6 caught by cocotb |
 
 ### Full details can be found in: 
