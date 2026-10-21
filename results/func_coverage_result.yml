@@ -1,0 +1,81 @@
+fifo:
+  cover_percentage: 100.0
+  coverage: 36
+  size: 36
+  type: <class 'cocotb_coverage.coverage.CoverItem'>
+fifo.cap:
+  at_least: 1
+  bins:_hits:
+    0: 542
+    1: 374
+    2: 78
+    3: 18
+    4: 7
+    5: 4
+    6: 2
+    7: 1
+    8: 2
+    9: 2
+    10: 3
+    11: 3
+    12: 2
+    13: 15
+    14: 72
+    15: 357
+    16: 518
+  cover_percentage: 100.0
+  coverage: 17
+  size: 17
+  type: <class 'cocotb_coverage.coverage.CoverPoint'>
+  weight: 1
+fifo.op:
+  at_least: 1
+  bins:_hits:
+    ('empty', 0, 0): 117
+    ('empty', 0, 1): 253
+    ('empty', 1, 0): 54
+    ('empty', 1, 1): 118
+    ('full', 0, 0): 114
+    ('full', 0, 1): 49
+    ('full', 1, 0): 225
+    ('full', 1, 1): 130
+    ('middle', 0, 0): 202
+    ('middle', 0, 1): 262
+    ('middle', 1, 0): 284
+    ('middle', 1, 1): 192
+  cover_percentage: 100.0
+  coverage: 12
+  size: 12
+  type: <class 'cocotb_coverage.coverage.CoverCross'>
+  weight: 1
+fifo.rd:
+  at_least: 1
+  bins:_hits:
+    0: 996
+    1: 1004
+  cover_percentage: 100.0
+  coverage: 2
+  size: 2
+  type: <class 'cocotb_coverage.coverage.CoverPoint'>
+  weight: 1
+fifo.state:
+  at_least: 1
+  bins:_hits:
+    empty: 542
+    full: 518
+    middle: 940
+  cover_percentage: 100.0
+  coverage: 3
+  size: 3
+  type: <class 'cocotb_coverage.coverage.CoverPoint'>
+  weight: 1
+fifo.wr:
+  at_least: 1
+  bins:_hits:
+    0: 997
+    1: 1003
+  cover_percentage: 100.0
+  coverage: 2
+  size: 2
+  type: <class 'cocotb_coverage.coverage.CoverPoint'>
+  weight: 1
